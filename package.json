@@ -1,0 +1,26 @@
+{
+  "name": "@docusaurus-plugin-medium-zoom/monorepo",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev:v2": "pnpm -C demo/docusaurus-v2 start",
+    "dev:v3": "pnpm -C demo/docusaurus-v3 start",
+    "dev": "pnpm -C package run dev",
+    "build": "pnpm -C package run build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ci:publish": "pnpm -r publish --access public --no-git-checks"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.6.3",
+    "eslint": "^8.56.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}

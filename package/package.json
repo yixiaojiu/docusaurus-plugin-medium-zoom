@@ -1,0 +1,47 @@
+{
+  "name": "docusaurus-plugin-medium-zoom",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "medium-zoom plugin for docusaurus v2 and v3",
+  "author": "yixiaojiu",
+  "license": "MIT",
+  "homepage": "https://github.com/yixiaojiu/docusaurus-plugin-medium-zoom#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcsapo/docusaurus-plugin-medium-zoom.git"
+  },
+  "keywords": [
+    "docusaurus",
+    "plugin",
+    "medium-zoom"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    },
+    "./zoom": {
+      "types": "./dist/zoom.d.js",
+      "import": "./dist/zoom.mjs",
+      "require": "./dist/zoom.cjs",
+      "default": "./dist/zoom.mjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./index.d.ts",
+  "files": ["README.md", "dist", "index.d.ts", "package.json"],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "medium-zoom": "^1.1.0"
+  },
+  "devDependencies": {
+    "@docusaurus/types": "3.1.0",
+    "@types/node": "20"
+  }
+}

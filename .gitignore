@@ -1,0 +1,15 @@
+package-lock.json
+yarn.lock
+
+.DS_Store
+.vite-ssg-dist
+.vite-ssg-temp
+*.local
+dist
+dist-ssr
+node_modules
+.idea/
+*.log
+
+demo/docusaurus-v3/.docusaurus
+demo/docusaurus-v2/.docusaurus

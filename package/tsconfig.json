@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "types": ["./docusaurus.d.ts", "node"],
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
