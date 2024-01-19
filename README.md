@@ -40,6 +40,8 @@ export default {
 } as Config
 ```
 
+## Configuration
+
 | Option        | Description                                                                                      | Default Value                                                                                         |
 |---------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
 | `selector`    | (optional) The selector to use for the images to zoom.                                          | `.markdown img`                                                                                      |
