@@ -19,3 +19,10 @@ declare module '@generated/docusaurus.config' {
   const config: DocusaurusConfig
   export default config
 }
+
+declare module '@docusaurus/ExecutionEnvironment' {
+  const canUseDOM: boolean
+  export default {
+    canUseDOM,
+  }
+}

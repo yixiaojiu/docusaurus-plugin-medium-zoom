@@ -14,6 +14,7 @@ export default defineConfig((options) => {
     minify: !options.watch,
     external: [
       '@generated/docusaurus.config',
+      '@docusaurus/ExecutionEnvironment',
       ...Object.keys(pkg.dependencies || {}),
     ],
 

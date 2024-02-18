@@ -1,7 +1,7 @@
 {
   "name": "docusaurus-plugin-medium-zoom",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "medium-zoom plugin for docusaurus v2 and v3",
   "author": "yixiaojiu",
   "license": "MIT",

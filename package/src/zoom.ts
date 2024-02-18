@@ -1,8 +1,8 @@
 import mediumZoom from 'medium-zoom'
 import type { ClientModule } from '@docusaurus/types'
 import siteConfig from '@generated/docusaurus.config'
-
-import type { ZoomOptions, ZoomSelector } from 'medium-zoom'
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment'
+import type { Zoom, ZoomOptions, ZoomSelector } from 'medium-zoom'
 
 export interface ZoomConfig {
   selector?: ZoomSelector
@@ -21,30 +21,40 @@ function getBackgroundColor(zoom?: ZoomConfig) {
     : zoom?.background?.light || 'rgb(255, 255, 255)'
 }
 
-const module: ClientModule = {
-  onRouteDidUpdate() {
-    if (typeof window === 'undefined')
+let zoomObject: Zoom
+let selector: ZoomSelector
+
+if (ExecutionEnvironment.canUseDOM) {
+  const zoom = siteConfig?.themeConfig?.zoom
+  const { selector: configSelector, config = {
+    background: getBackgroundColor(),
+  } } = zoom || ({} as ZoomConfig)
+  selector = configSelector || '.markdown img'
+
+  zoomObject = mediumZoom(selector, config)
+  const observer = new MutationObserver(() => {
+    if (!zoomObject)
       return
 
-    const zoom = siteConfig?.themeConfig?.zoom
-    const { selector = '.markdown img', config = {
-      background: getBackgroundColor(),
-    } } = zoom || ({} as ZoomConfig)
+    zoomObject.update({ background: getBackgroundColor(zoom) })
+  })
 
-    const zoomObject = mediumZoom(selector, config)
-    const observer = new MutationObserver(() => {
-      if (!zoomObject)
-        return
+  const htmlNode = document.querySelector('html')
 
-      zoomObject.update({ background: getBackgroundColor(zoom) })
-    })
+  observer.observe(htmlNode!, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  })
+}
 
-    const htmlNode = document.querySelector('html')
-
-    observer.observe(htmlNode!, {
-      attributes: true,
-      attributeFilter: ['data-theme'],
-    })
+const module: ClientModule = {
+  onRouteDidUpdate() {
+    zoomObject.attach(selector)
+  },
+  onRouteUpdate() {
+    return () => {
+      zoomObject.detach(selector)
+    }
   },
 }
 export default module
